@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kasoku Renovation</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body class="font-dm text-gray-900">
+<!-- Header -->
+<header class="relative z-20">
+  <div class="container relative bg-white">
+    <div class="flex justify-between items-center py-6 lg:justify-start">
+      <a href="index.html" class="mr-8">
+        <img src="assets/logo.png" alt="Logo" class="h-10 sm:h-20 w-auto">
+      </a>
+
+      <div class="lg:hidden">
+        <button
+          id="toggle-mobile"
+          class="inline-flex items-center justify-center focus:outline-none"
+        >
+          <i class="fas fa-bars trxt-xl text-red-700 hover:text-gray-900"></i>
+        </button>
+      </div>
+
+      <nav class="hidden lg:flex space-x-10">
+        <a href="usługi.html" class="font-medium hover:text-red-700 ">Usługi</a>
+        <a href="cennik.html" class="font-medium hover:text-red-700 ">Cennik</a>
+        <a href="kontakt.html" class="font-medium hover:text-red-700 ">Kontakt</a>
+      </nav>
+    </div>
+    <div id="menu-mobile" class="hidden absolute top-0 p-2 z-20 inset-x-0">
+      <div class="rounded-lg shadow-lg ring-1 ring-gray-900 ring-opacity-5 bg-white divide-y-2 divide-gray-50 w-full">
+        <div class="p-5">
+          <div class="flex items-center justify-between">
+            <img src="assets/logo.png" alt="Kasoku">
+            <button
+              id="hide-menu"
+              class="inline-flex items-center text-red-700 focus:outline-none hover:text-gray-900"
+            >
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <div class="mt-6">
+            <nav>
+              <ul>
+                <li>
+                  <a href="usługi.html" class="py-3 flex items-center hover:bg-gray-50">
+                    <i class="fa-solid fa-car text-2xl text-red-700"></i>
+                    <span class="ml-3 text-base font-medium">
+                                                Usługi
+                                            </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="cennik.html" class="py-3 flex items-center hover:bg-gray-50">
+                    <i class="fa-solid fa-car text-2xl text-red-700"></i>
+                    <span class="ml-3 text-base font-medium">
+                                                Cennik
+                                            </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="kontakt.html" class="py-3 flex items-center hover:bg-gray-50">
+                    <i class="fa-solid fa-car text-2xl text-red-700"></i>
+                    <span class="ml-3 text-base font-medium">
+                                                Kontakt
+                                            </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero section -->
+
+<!-- Jumbotron -->
+<div
+  class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center"
+  style="background-image: url('assets/foto5.jpg'); height: 700px"
+>
+  <div
+    class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
+    style="background-color: rgba(0, 0, 0, 0.6)"
+  >
+    <div class="flex h-full items-center justify-center">
+      <div class="text-white">
+        <h2 class="mb-4 text-4xl font-semibold">Odbudujemy twój wymarzony samochód na najwyższym
+          poziomie</h2>
+        <h4 class="mb-6 text-xl font-semibold">Specjalizujemy się w blacharstwie/renowacjach oraz
+          zabezpieczeniach antykorozyjnych</h4>
+        <a href="kontakt.html">
+          <button
+            type="button"
+            class="rounded border-2 border-neutral-50 px-7 pb-[8px] pt-[10px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            Zadzwoń już teraz
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+<!-- section info -->
+<section class="mt-8 md:mt-18 lg:mt-18 overflow-x-hidden ">
+  <div class="container">
+
+    <div class="w-full mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 border-gray-300 pb-12 lg:pb-20">
+      <div class="bg-red-100 p-8 lg:p-12 xl:min-h-96 order-2 md:order-1">
+        <div class="flex flex-col text-left w-full 2xl:w-3/4 ">
+          <h4 class="text-xl xl:text-2xl w-full 2xl:w-3/4 font-bold">
+            Nasza praca to nasza pasja
+          </h4>
+          <p class="text-sm xl:text-base my-6">
+            Jesteśmy pasjonatami motoryzacji z którymi każdy znajdzie wspólny język.
+            Oprócz pracy w warsztacie aktywnie uczestniczymy w zlotach motoryzacyjnych w całej
+            Polsce.
+          </p>
+          <a
+            href="#our-cars"
+            class="inline-flex p-3 rounded w-50 shadow-sm font-medium text-white bg-red-700 hover:bg-grey-900 focus:outline-none"
+          >
+            Nasze projekty
+            <img src="assets/icons/arrow-right.svg" alt="arrow-right" class="ml-2">
+          </a>
+        </div>
+      </div>
+      <div class="order-1 md:order-2 h-48 sm:h-64 md:min-h-96" data-aos="fade-left">
+        <img class="w-full h-full object-cover" src="assets/foto10.jpg" alt="zdjecie">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sekcja Narzędzia -->
+
+<section class="mt-8 md:mt-12 lg:mt-20 ">
+  <div class="container">
+    <div class="flex flex-col items-center text-center">
+      <p class="font-architect w-full md:w-8/12 text-red-700 sm:mb-4 sm:text-lg md:text-xl">
+        "Jeśli samochód nie sprawia przyjemności, to nie można go określić tym mianem."
+        <span class="text-red-700">- Akio Toyoda</span>
+      </p>
+
+      <h2 class="w-full md:w-8/12 text-2xl md:text-4xl font-bold">
+        Nasze podejście do współpracy wyróżnia dokładność, pasja, wiedza i otwarta komunikacja.
+      </h2>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 border-b border-gray-300 px-4 xl:px-32 py-12 xl:py-20">
+      <div class="flex flex-col items-center text-center">
+                    <span class="w-16 h-16 rounded-full flex items-center justify-center bg-red-700 mb-4">
+                        <img src="assets/icons/settings.svg" alt=" settings">
+                    </span>
+        <h3 class="text-2xl md:text-3xl font-bold mb-3">Pasja</h3>
+        <p class="text-lg">
+          W Kasoku Renovation przywiązujemy szczególną uwagę do profesjonalnej odbudowy pojazdu. Nie
+          interesują nas półsrodki.
+        </p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+                    <span class="w-16 h-16 rounded-full flex items-center justify-center bg-red-700 mb-4 mt-10 lg:mt-0">
+                        <img src="assets/icons/raports.svg" alt=" settings">
+                    </span>
+        <h3 class="text-2xl md:text-3xl font-bold mb-3">Dokładność</h3>
+        <p class="text-lg">
+          Naszą misją jest przekształcanie samochodów w unikalne dzieła sztuki na czterech kołach,
+          nie boimy się wyzwań.
+        </p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+                    <span class="w-16 h-16 rounded-full flex items-center justify-center bg-red-700 mb-4 mt-10 lg:mt-0">
+                        <img src="assets/icons/publish.svg" alt=" settings">
+                    </span>
+        <h3 class="text-2xl md:text-3xl font-bold mb-3">Komunikacja</h3>
+        <p class="text-lg">
+          Każdy klient otrzymuje od nas pełną relację foto/video z prac i jest na bieżąco
+          informowany o wszystkim co się dzieje z jego autem - doceniają nas za to nasi zadowoleni
+          klienci.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- analityka sekcja (zadowoleni klienci)-->
+<section class="overflow-x-hidden">
+  <div class="container">
+    <div class="flex flex-wrap items-center justify-center border-b border-gray-300 py-12 lg:py-20">
+      <div class="w-full lg:w-5/12 px-2 mx-auto order-2 lg:order-1" data-aos="fade-right">
+        <p class="font-architect text-red-700 mb-2 sm:mb-4 lg:text-lg xl:text-xl">
+          "Zadowolony klient to najlepsza reklama." - Jeffrey Gitomer
+        </p>
+        <h3 class="text-2xl md:text-3xl mb-2 font-bold">
+          Zadowolenie klientów jest dla nas priorytetem
+        </h3>
+        <p class="w-full mt-3 sm:mt-5 lg:text-lg xl:text-xl">
+          Opinie zadowolonych klientów są dla nas nagrodą, za którą serdecznie dziękujemy.
+          To dzięki nim rozwijamy się i kontynuujemy naszą misję, by spełniać oczekiwania i
+          uszczęśliwiać kolejnych klientów.
+        </p>
+
+        <div class="flex mt-8">
+          <div class="flex-shrink-0">
+            <img class="w-8 h-8 rounded-full" src="assets/avatar.jpg" alt="avatar">
+          </div>
+          <div class="ml-4">
+            <p class="italic">
+              Drodzy Państwo!
+              Robota zrobiona tak profesjonalnie że gdy jechałem do Niemiec to rozstawiali rogatki
+              bo myśleli że to czołg nadjeżdża.
+              Polecam widać że robota robiona z pasją🔥
+            </p>
+            <p class="mt-2 text-base">
+              Pan Jakub - <span class="text-red-700 font-bold">Mercedes</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-3/4 h-full mb-10 lg:mb-0 lg:w-5/12 order-1 lg:oreder-2" data-aos="fade-left">
+        <img src="assets/kolaz mercedes.png" alt="klient" class="w-full h-full">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- projekty -->
+
+<section class="mt-8 md:mt-12 lg:mt-20 overflow-x-hidden">
+  <div class="container" id="our-cars">
+    <h2 class="text-center text-2xl md:text-4xl font-bold">Nasze firmowe projekty</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 md:gap-x-10 xl:gap-x-16 gap-y-12 lg:gap-y-0 px-4 xl:px-12 py-8 lg:py-20">
+      <div class="flex flex-col">
+        <img
+          src="assets/photos/lilith_ulez_29photos.jpg"
+          alt="Mazda MX-5 NB Lilith"
+          data-aos="flip-up"
+        >
+        <h4 class="text-xl xl:text-2xl font-bold mt-6 mb-3">Mazda MX-5 "Lilith"</h4>
+        <p class="text-base xl:text-lg flex-grow">
+          Lilith to jedna z pierwszych Miat, którą zbudowaliśmy od zera.
+          Jest manifestem naszej pasji do japońskiej motoryzacji i zamiłowania do motosportu.
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <img
+          src="assets/photos/limonka_silesia_29photos.jpg"
+          alt="Mazda MX-5 NB Limonka"
+          data-aos="flip-up"
+        >
+        <h4 class="text-xl xl:text-2xl font-bold mt-6 mb-3">Mazda MX-5 "Limonka"</h4>
+        <p class="text-base xl:text-lg flex-grow">
+          Torówka przygotowana zgodnie z regulaminem klasy Spec NA/NB do startowania w Miata
+          Challenge.
+          Odelżona i wystrojona do robienia najlepszych czasów na torach.
+        </p>
+      </div>
+      <div class="flex flex-col">
+        <img
+          src="assets/photos/jacobs_blue.jpg"
+          alt="Mazda MX-5 NBFL Jacob's Blue Miata"
+          data-aos="flip-up"
+        >
+        <h4 class="text-xl xl:text-2xl font-bold mt-6 mb-3">Mazda MX-5 "Jacob's Blue"</h4>
+        <p class="text-base xl:text-lg flex-grow">
+          Miata idealna: na wakacje, na zlot, na co dzień, ale również na tor.
+          Silnik 1.6 doładowany kompresorem Rotrex&trade; - z seryjnych 110 koni uzyskaliśmy 220 (a
+          to dopiero początek 🔥).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STOPKA -->
+<footer class="mt-8 md:mt-12 lg:mt-20">
+  <div class="container">
+    <div class="flex flex-wrap justify-between border-t border-gray-300 py-12 lg:py-20">
+      <div class="w-full lg:w-4/12 px-4 text-center">
+        <img src="assets/logo.png" alt="Kasoku">
+        <span class="px-3 py-2 text-sm rounded-full bg-red-500  text-white">
+                        Zapraszamy do kontaktu
+                    </span>
+        <p class="text-base mt-4">
+          Adress:
+        </p>
+        <p>
+          Stara 76, Nadma 05-270
+        </p>
+        <p class="text-base mt-4">
+          Telefon:
+        </p>
+        <p>
+          798 405 145
+        </p>
+      </div>
+
+      <div class="w-full lg:w-8/12 xl:w-7/12 px-4">
+        <div class="flex flex-wrap justify-between xl:justify-end mb-6">
+          <div class="w-full md:w-4/12 xl:w-3/12 px-0 lg:px-4 pt-6 lg:pt-0">
+                            <span class="block font-bold mb-3">
+                                Dla ciebie
+                            </span>
+            <ul class="list-none">
+              <li>
+                <a href="usługi.html" class="text-red-700 hover:text-gray-900 pb-3 block">Usługi</a>
+              </li>
+              <li>
+                <a href="cennik.html" class="text-red-700 hover:text-gray-900 pb-3 block">Cennik</a>
+              </li>
+              <li>
+                <a
+                  href="kontakt.html"
+                  class="text-red-700 hover:text-gray-900 pb-3 block"
+                >Kontakt</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="w-full md:w-4/12 xl:w-3/12 px-0 lg:px-4 pt-6 lg:pt-0">
+                            <span class="block font-bold mb-3">
+                                Godzinny otwarcia
+                            </span>
+            <ul class="list-none">
+              <li class="text-red-700 hover:text-gray-900 pb-3 block">
+                Pon-Pt 08:00-18:00
+              </li>
+              <li class="text-red-700 hover:text-gray-900 pb-3 block">
+                Sobota - zamknięte
+              </li>
+              <li class="text-red-700 hover:text-gray-900 pb-3 block">
+                Niedziela - zamknięte
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-8 lg:mb-16 flex flex-wrap items-center justify-between">
+      <span class="order-2 sm:order-1 mt-3 sm:mt-0">2023 KasokuRenovation. All rights reserved.</span>
+      <div class="flex items-center space-x-2 oreder-1 sm:order-2">
+        <a
+          href="https://www.facebook.com/profile.php?id=100091727993738" target="_blank"
+          class="bg-red-700 rounded-full w-8 h-8 text-white text-center"
+        >
+          <i class="fab fa-facebook-f align-bottom"></i>
+        </a>
+        <a
+          href="https://www.facebook.com/messages/t/101921749562967" target="_blank"
+          class="bg-red-700 rounded-full w-8 h-8 text-white text-center"
+        >
+          <i class="fab fa-facebook-messenger align-bottom"></i>
+        </a>
+        <a
+          href="https://youtube.com/@KasokuCars" target="_blank"
+          class="bg-red-700 rounded-full w-8 h-8 text-white text-center"
+        >
+          <i class="fab fa-youtube align-bottom"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+  integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"
+></script>
+
+<script>
+  AOS.init({
+    delay: 200,
+    duration: 1200,
+    once: true,
+    // disable: 'mobile'
+  });
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

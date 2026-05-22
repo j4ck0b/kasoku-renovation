@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kasoku Renovation - Profesjonalne blacharstwo, odbudowa pojazdów, piaskowanie oraz zabezpieczenia antykorozyjne w Nadmie pod Warszawą. Japońska precyzja, pasja do motoryzacji.">
+    <meta name="keywords" content="blacharstwo nadma, blacharstwo warszawa, renowacja samochodów, piaskowanie nadma, antykorozja warszawa, zabezpieczenie antykorozyjne, mazda mx5 renowacja, odbudowa aut zabytkowych">
+    <meta name="author" content="Kasoku Renovation">
+    <title>Kasoku Renovation | Odbudowa Samochodów i Zabezpieczenia Antykorozyjne Nadma</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=VT323&display=swap" rel="stylesheet">
+    
+    <!-- Link to Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Canvas for 8-bit Sakura Falling Petals -->
+    <canvas id="sakura-canvas"></canvas>
+
+    <!-- Glassmorphic Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo_transparent.png" alt="Kasoku Renovation Logo" class="logo-img">
+                <span class="logo-text">KASOKU <span class="accent-text">RENOVATION</span></span>
+            </a>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link">O Nas</a></li>
+                <li><a href="#simulator" class="nav-link">Symulator</a></li>
+                <li><a href="#services" class="nav-link">Usługi</a></li>
+                <li><a href="#portfolio" class="nav-link">Realizacje</a></li>
+                <li><a href="#contact" class="btn btn-secondary btn-sm">Darmowa Wycena</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Otwórz menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section" id="hero">
+        <div class="hero-grid container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span> 8-Bit Precision & Automotive Passion
+                </div>
+                <h1 class="hero-title">Odbudujemy Twój<br><span class="gradient-text">Wymarzony Samochód.</span></h1>
+                <p class="hero-subtitle">Specjalizujemy się w profesjonalnym blacharstwie, renowacjach oraz zaawansowanych zabezpieczeniach antykorozyjnych w Nadmie pod Warszawą. Pasja zdefiniowana w metalu.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Zamów Darmową Wycenę</a>
+                    <a href="#simulator" class="btn btn-secondary">Wypróbuj Symulator</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Pasji i Jakości</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Odbudowanych aut</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">FOTO</span>
+                        <span class="stat-label">Pełna relacja z prac</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-media">
+                <div class="pixel-art-wrapper">
+                    <img src="assets/images/sakura_pixel_art.png" alt="8-bit Cherry Blossom Tree Over Futuristic Nadma" class="pixel-art-img">
+                    <div class="pixel-overlay"></div>
+                    <div class="pixel-label">KASOKU SAKURA DEPT. // TYPE: R-800</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactive Sandblasting Simulator -->
+    <section class="simulator-section" id="simulator">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Interaktywna Zabawa</div>
+                <h2 class="section-title">8-bitowy Symulator <span class="gradient-text">Piaskowania</span></h2>
+                <p class="section-subtitle">Chwyć za pistolet piaskarski! Przeciągnij myszką lub dotknij ekranu na poniższej grafice, aby usunąć rdzę i zanieczyszczenia, odsłaniając czystą, japońską stal.</p>
+            </div>
+
+            <div class="simulator-console">
+                <div class="console-screen-wrapper">
+                    <div class="console-glass"></div>
+                    <div class="console-scanlines"></div>
+                    <canvas id="simulator-canvas" width="800" height="450"></canvas>
+                    <div class="simulator-prompt" id="simulator-prompt">
+                        <div class="prompt-icon">🖱️</div>
+                        <div class="prompt-text">KLIKNIJ I PRZECIĄGNIJ, ABY ZACZĄĆ PIASKOWANIE</div>
+                    </div>
+                    <div class="simulator-hud">
+                        <div class="hud-item"><span class="hud-label">RUST LEVEL:</span> <span class="hud-value" id="rust-percent">100%</span></div>
+                        <div class="hud-item"><span class="hud-label">PSI PRESSURE:</span> <span class="hud-value blinking" id="psi-value">120 PSI</span></div>
+                    </div>
+                </div>
+                <div class="console-controls">
+                    <button class="btn btn-primary" id="btn-reset-simulator">Restartuj Symulację</button>
+                    <div class="status-indicator">
+                        <span class="status-dot green"></span>
+                        <span class="status-label">READY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-side">
+                    <div class="glass-card about-decor-card">
+                        <div class="code-preview">
+                            <span class="code-tag">&lt;kasoku-values&gt;</span>
+                            <h3>Nasza Filozofia</h3>
+                            <ul class="values-list">
+                                <li>
+                                    <span class="pixel-bullet">■</span>
+                                    <div>
+                                        <strong>Pasja:</strong>
+                                        <p>W Kasoku Renovation przywiązujemy szczególną uwagę do profesjonalnej odbudowy pojazdu. Nie interesują nas półśrodki.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="pixel-bullet">■</span>
+                                    <div>
+                                        <strong>Dokładność:</strong>
+                                        <p>Naszą misją jest przekształcanie samochodów w unikalne dzieła sztuki na czterech kołach. Nie boimy się najtrudniejszych blacharskich wyzwań.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="pixel-bullet">■</span>
+                                    <div>
+                                        <strong>Komunikacja:</strong>
+                                        <p>Każdy klient otrzymuje pełną relację foto/video z prac i jest na bieżąco informowany o postępach. Doceniają nas za to nasi zadowoleni klienci.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <span class="code-tag">&lt;/kasoku-values&gt;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="badge">O Nas</div>
+                    <h2 class="section-title">Nasza Praca To<br><span class="gradient-text">Nasza Prawdziwa Pasja.</span></h2>
+                    <p class="about-text">Jesteśmy pasjonatami motoryzacji, z którymi każdy znajdzie wspólny język. Oprócz codziennej, precyzyjnej pracy w warsztacie, aktywnie uczestniczymy w zlotach motoryzacyjnych w całej Polsce. Wierzymy, że odbudowa kultowych aut wymaga nie tylko wiedzy inżynieryjnej, ale przede wszystkim bezkompromisowej miłości do detali.</p>
+                    
+                    <!-- Akio Toyoda Quote Callout -->
+                    <div class="glass-card quote-callout" style="padding: 20px 24px; border-left: 4px solid var(--sakura-pink); margin-top: 30px; background: rgba(255, 121, 198, 0.03);">
+                        <p class="quote-text" style="font-family: var(--font-mono); font-size: 1.15rem; color: var(--sakura-pink); font-style: italic; line-height: 1.4; margin-bottom: 8px;">
+                            "Jeśli samochód nie sprawia przyjemności, to nie można go określić tym mianem."
+                        </p>
+                        <span class="quote-author" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">— Akio Toyoda</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Oferta Usług</div>
+                <h2 class="section-title">Co Możemy Dla Ciebie <span class="gradient-text">Stworzyć</span>?</h2>
+                <p class="section-subtitle">Świadczymy najwyższej jakości usługi z zakresu renowacji blacharsko-lakierniczej oraz mechaniki pojazdowej w Nadmie pod Warszawą.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1: Kompleksowe Renowacje -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-wrapper">
+                        <span class="service-icon-bg"></span>
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="var(--sakura-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="var(--sakura-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="var(--sakura-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Kompleksowe Renowacje</h3>
+                    <p>Rozbierzemy Twoje auto do ostatniej śrubki i zadbamy o każdy jeden element, aby po ponownym montażu powstało prawdziwe, lśniące dzieło sztuki motoryzacyjnej.</p>
+                    <ul class="card-features" style="list-style: none; margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><span style="color: var(--sakura-pink);">■</span> Pełny demontaż i weryfikacja</li>
+                        <li><span style="color: var(--sakura-pink);">■</span> Odbudowa detali do stanu fabrycznego</li>
+                        <li><span style="color: var(--sakura-pink);">■</span> Obszerna dokumentacja foto/video</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Konserwacja Podwozia -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-wrapper">
+                        <span class="service-icon-bg"></span>
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="var(--neon-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 6V12L16 14" stroke="var(--neon-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Konserwacja Podwozia</h3>
+                    <p>W zależności od stopnia skorodowania i sposobu użytkowania, dobieramy optymalne metody czyszczenia (w tym dokładne piaskowanie) i nakładania systemów ochronnych.</p>
+                    <ul class="card-features" style="list-style: none; margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><span style="color: var(--neon-cyan);">■</span> Preparaty Mike Sanders i Innotec</li>
+                        <li><span style="color: var(--neon-cyan);">■</span> Dokładne piaskowanie ognisk rdzy</li>
+                        <li><span style="color: var(--neon-cyan);">■</span> Auta nowe - bez utraty gwarancji</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Naprawy Blacharskie -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-wrapper">
+                        <span class="service-icon-bg"></span>
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="var(--sakura-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Naprawy Blacharskie</h3>
+                    <p>Filar każdej odbudowy. Poza precyzyjną wymianą reperaturek, dorabiamy unikalne elementy blacharskie na wzór oryginalnych, dbając o sztywność oraz geometrię karoserii.</p>
+                    <ul class="card-features" style="list-style: none; margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><span style="color: var(--sakura-pink);">■</span> Wymiana reperaturek poszycia</li>
+                        <li><span style="color: var(--sakura-pink);">■</span> Ręczne dorabianie profili z blachy</li>
+                        <li><span style="color: var(--sakura-pink);">■</span> Spawanie w osłonie gazów szlachetnych</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: Serwis Zawieszenia i Eksploatacja -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-wrapper">
+                        <span class="service-icon-bg"></span>
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="var(--neon-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 8V12H16" stroke="var(--neon-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Serwis & Eksploatacja</h3>
+                    <p>Kompleksowa regeneracja zawieszeń i układów hamulcowych: demontaż zacisków, piaskowanie, cynkowanie śrub, lakierowanie proszkowe oraz tuleje poliuretanowe.</p>
+                    <ul class="card-features" style="list-style: none; margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                        <li><span style="color: var(--neon-cyan);">■</span> Tuleje poliuretanowe i sworznie</li>
+                        <li><span style="color: var(--neon-cyan);">■</span> Piaskowanie i lakierowanie proszkowe</li>
+                        <li><span style="color: var(--neon-cyan);">■</span> Filtry, oleje, sprzęgła i rozrządy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- DETAILED WORK SCOPE PANEL -->
+            <div class="detailed-scope glass-card" style="margin-top: 40px; padding: 40px; border-color: rgba(255, 121, 198, 0.12); box-shadow: 0 0 20px var(--card-glow-pink);">
+                <div class="scope-header" style="margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <span class="badge" style="margin-bottom: 8px;">Baza Danych Kasoku</span>
+                        <h3 style="font-size: 1.8rem; font-family: var(--font-heading);">Szczegółowy <span class="gradient-text">Zakres Operacji</span></h3>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 1.25rem; color: var(--text-muted);">
+                        SPEC_CODE: <span style="color: var(--sakura-pink); text-shadow: 0 0 5px var(--sakura-glow);">JDM_RESTORE_V3</span>
+                    </div>
+                </div>
+
+                <div class="scope-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div>
+                        <h4 style="font-size: 1.2rem; color: var(--sakura-pink); margin-bottom: 15px; border-bottom: 1px solid rgba(255, 121, 198, 0.15); padding-bottom: 8px;">🛡️ Regeneracja Zawieszenia &amp; Blacharstwo</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem; color: var(--text-muted);">
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--sakura-pink);">■</span> Wymiana amortyzatorów, sprężyn oraz precyzyjne ustawianie geometrii ramy.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--sakura-pink);">■</span> Wymiana elementów gumowych zawieszenia na wysoce trwałe tuleje poliuretanowe.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--sakura-pink);">■</span> Kompleksowa regeneracja i wymiana sworzni wahaczy w pełnej skali.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--sakura-pink);">■</span> Regeneracja metalowych elementów zawieszenia: dokładne piaskowanie, malowanie proszkowe oraz końcowe zabezpieczenie specjalistycznym woskiem technicznym.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--sakura-pink);">■</span> Cynkowanie galwaniczne śrub i wszystkich elementów montażowych przed scaleniem.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--sakura-pink);">■</span> Weryfikacja stanu technicznego i precyzyjna wymiana łożysk kół.</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="font-size: 1.2rem; color: var(--neon-cyan); margin-bottom: 15px; border-bottom: 1px solid rgba(139, 233, 253, 0.15); padding-bottom: 8px;">⚙️ Serwis Eksploatacyjny &amp; Hamulce</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem; color: var(--text-muted);">
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--neon-cyan);">■</span> Pełna obsługa okresowa: wymiana oleju silnikowego, przekładniowego, filtrów i płynów eksploatacyjnych.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--neon-cyan);">■</span> Wymiana kompletnych układów sprzęgła, pasków/łańcuchów rozrządu oraz precyzyjne uszczelnianie silników.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--neon-cyan);">■</span> Kompleksowa regeneracja układów hamulcowych: demontaż zacisków i jarzm do zera.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--neon-cyan);">■</span> Piaskowanie, cynkowanie oraz piecowe lakierowanie proszkowe elementów hamulcowych.</li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: var(--neon-cyan);">■</span> Wymiana komponentów wewnętrznych układu: tłoczków, gumek ochronnych oraz zaworów odpowietrzających.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; padding: 15px 20px; background: rgba(255, 121, 198, 0.03); border: 1px dashed rgba(255, 121, 198, 0.15); border-radius: 10px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+                    <strong style="color: var(--sakura-pink);">Kultura Ochrony Aut Nowych:</strong> Cenimy sobie najwyższą jakość wykonania. Przy zabezpieczeniach antykorozyjnych nowych samochodów bardzo dokładnie izolujemy wszystkie wrażliwe elementy układu wydechowego, napędowego i nadwozia. Podwozie jest dokładnie myte, suszone i odtłuszczane przed nałożeniem wosków i powłok Mike Sanders oraz Innotec, dzięki czemu <strong style="color: var(--text-white);">zachowujesz pełną gwarancję fabryczną producenta!</strong>
+                </div>
+            </div>
+
+            <!-- NETTO PRICING MATRIX -->
+            <div class="pricing-matrix glass-card" style="margin-top: 50px; padding: 40px; border-color: rgba(139, 233, 253, 0.15); box-shadow: 0 0 25px var(--card-glow-cyan);">
+                <div class="pricing-header" style="margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <span class="badge" style="margin-bottom: 8px; background: rgba(139, 233, 253, 0.08); border-color: rgba(139, 233, 253, 0.2); color: var(--neon-cyan);">System Wycen</span>
+                        <h3 style="font-size: 1.8rem; font-family: var(--font-heading);">Szacunkowy <span class="gradient-text">Cennik Usług</span></h3>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 1.25rem; color: var(--text-muted);">
+                        SYSTEM STATUS: <span style="color: #50fa7b; text-shadow: 0 0 5px #50fa7b;">ACTIVE</span>
+                    </div>
+                </div>
+                
+                <div class="pricing-list" style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="pricing-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px dashed rgba(255,255,255,0.08); flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-family: var(--font-mono); font-size: 1.4rem; color: var(--sakura-pink);">01 //</span>
+                            <div>
+                                <strong style="font-size: 1.1rem; color: var(--text-white);">Mechanika &amp; Naprawy Blacharskie</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Cena za roboczogodzinę specjalistycznych prac blacharskich</p>
+                            </div>
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); font-weight: bold;">
+                            150 PLN <span style="font-size: 0.9rem; color: var(--text-dimmed);">netto / godz.</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px dashed rgba(255,255,255,0.08); flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-family: var(--font-mono); font-size: 1.4rem; color: var(--sakura-pink);">02 //</span>
+                            <div>
+                                <strong style="font-size: 1.1rem; color: var(--text-white);">Zabezpieczenie Antykorozyjne Nowego Auta</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Precyzyjna ochrona podwozia bez utraty gwarancji producenta</p>
+                            </div>
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); font-weight: bold;">
+                            od 3 800 PLN <span style="font-size: 0.9rem; color: var(--text-dimmed);">netto</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-row" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-family: var(--font-mono); font-size: 1.4rem; color: var(--sakura-pink);">03 //</span>
+                            <div>
+                                <strong style="font-size: 1.1rem; color: var(--text-white);">Konserwacja Podwozia z Piaskowaniem</strong>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Kompleksowe piaskowanie ognisk rdzy + trójwarstwowy system ochrony</p>
+                            </div>
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 1.6rem; color: var(--neon-cyan); font-weight: bold;">
+                            od 6 000 PLN <span style="font-size: 0.9rem; color: var(--text-dimmed);">netto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.88rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div style="max-width: 650px;">
+                        <strong>Co otrzymujesz w cenie:</strong> Obszerna, szczegółowa dokumentacja zdjęciowa oraz pełna rozpiska wykorzystanych materiałów. Indywidualną wycenę otrzymasz po profesjonalnych oględzinach pojazdu w naszym warsztacie.
+                    </div>
+                    <a href="#contact" class="btn btn-secondary btn-sm">Zarezerwuj Termin Oględzin</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After & Projects Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Realizacje</div>
+                <h2 class="section-title">Różnica, Którą <span class="gradient-text">Musisz Zobaczyć</span></h2>
+                <p class="section-subtitle">Porównaj stan przed i po profesjonalnych zabiegach blacharsko-lakierniczych. Przesuń suwak na poniższej wizualizacji ramy.</p>
+            </div>
+
+            <!-- Before/After Interactive Slider -->
+            <div class="slider-wrapper glass-card">
+                <div class="before-after-slider">
+                    <!-- Before state (Rust, left side) -->
+                    <div class="img-container before-image">
+                        <div class="simulated-image before-sim">
+                            <div class="grid-backdrop"></div>
+                            <div class="rusty-object">
+                                <div class="item-title">PRZED / BEFORE</div>
+                                <div class="industrial-part rusty"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- After state (Clean painted, right side) -->
+                    <div class="img-container after-image">
+                        <div class="simulated-image after-sim">
+                            <div class="grid-backdrop"></div>
+                            <div class="rusty-object">
+                                <div class="item-title">PO / AFTER</div>
+                                <div class="industrial-part clean"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slider controller bar -->
+                    <div class="slider-handle">
+                        <div class="handle-line"></div>
+                        <div class="handle-button">
+                            <svg class="handle-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="8 17 3 12 8 7"></polyline>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-input" id="before-after-range" aria-label="Suwak porównania przed i po">
+                </div>
+                
+                <div class="slider-details">
+                    <div class="slider-meta">
+                        <h4>REJESTR PROJEKTU: Mercedes-Benz W124 Klasyk</h4>
+                        <p>Precyzyjna odbudowa blacharska ramy i elementów nośnych. Piaskowanie korundem, wycięcie skorodowanych sekcji, spawanie renowacyjne i trójwarstwowy wosk ochronny.</p>
+                    </div>
+                    <div class="slider-controls-hint">◀ Przeciągnij suwak w lewo lub w prawo ▶</div>
+                </div>
+            </div>
+
+            <!-- HILARIOUS MERCEDES TESTIMONIAL -->
+            <div class="testimonial-wrapper glass-card" style="margin-top: 40px; padding: 40px; position: relative; border-color: rgba(255, 121, 198, 0.15); box-shadow: 0 0 25px var(--card-glow-pink);">
+                <div class="quote-sign" style="position: absolute; top: 15px; left: 25px; font-family: var(--font-mono); font-size: 5rem; line-height: 1; color: rgba(255,121,198,0.08); pointer-events: none;">“</div>
+                    <div class="testimonial-stars" style="color: #f1fa8c; font-size: 1.25rem; margin-bottom: 15px; text-shadow: 0 0 5px #f1fa8c; text-align: center;">★★★★★</div>
+                <blockquote style="font-family: var(--font-primary); font-size: 1.15rem; font-style: italic; color: var(--text-white); max-width: 850px; margin: 0 auto 20px auto; line-height: 1.6; text-align: center;">
+                    "Drodzy Państwo! Robota zrobiona tak profesjonalnie że gdy jechałem do Niemiec to rozstawiali rogatki bo myśleli że to czołg nadjeżdża. Polecam widać że robota robiona z pasją🔥"
+                </blockquote>
+                <div class="testimonial-author" style="text-align: center;">
+                    <cite style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: bold; font-style: normal; color: var(--sakura-pink);">
+                        Pan Jakub <span style="font-weight: normal; color: var(--text-muted);">— Właściciel legendarnego</span> Mercedes-Benz W124
+                    </cite>
+                </div>
+            </div>
+
+            <!-- OTHER USER REVIEWS FROM THE WEBSITE -->
+            <div class="extra-reviews" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
+                <!-- Dodge Charger -->
+                <div class="review-card glass-card" style="padding: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <span style="font-weight: bold; font-family: var(--font-heading); color: var(--neon-cyan);">Dodge Charger</span>
+                        <span style="color: #f1fa8c;">★★★★★</span>
+                    </div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">"Serdecznie polecam. Samochód dobrze wyczyszczony i zabezpieczony przed korozją. Na każdym etapie Kuba dzwonił do mnie, mówił co się dzieje i proponował różne rozwiązania. Dodatkowo Kuba zaproponował białą farbę zabezpieczenia ramy, pod kolor auta. Dzięki za kawał roboty!"</p>
+                </div>
+
+                <!-- Mazda MX-5 NB Turbo -->
+                <div class="review-card glass-card" style="padding: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <span style="font-weight: bold; font-family: var(--font-heading); color: var(--sakura-pink);">Mazda MX-5 NB Turbo</span>
+                        <span style="color: #f1fa8c;">★★★★★</span>
+                    </div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">"Bezapelacyjnie polecam chłopaków. Znają się na rzeczy i dokumentują wszystko zdjęciowo. U mnie poprawiona spora ilość rzeczy dzięki temu bezstresowo można jeździć. W razie niejasności doradzają w każdym budżecie wg. klienta. Pozdrówki z czarnej NB Turbo!"</p>
+                </div>
+
+                <!-- Mazda MX-5 NB Lilith -->
+                <div class="review-card glass-card" style="padding: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <span style="font-weight: bold; font-family: var(--font-heading); color: var(--neon-cyan);">Mazda MX-5 "Lilith"</span>
+                        <span style="color: #f1fa8c;">★★★★★</span>
+                    </div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">"Spełnili moje marzenie posiadania torowej Mazdy MX-5. Auto zostało całkowicie rozebrane, odbudowane, zabezpieczone, uszczelnione i złożone. Pasja, zaangażowanie i przywiązanie do szczegółów, zdecydowanie POLECAM!"</p>
+                </div>
+            </div>
+
+            <!-- KASOKU WORKSHOP GALLERY -->
+            <div class="workshop-gallery-section" style="margin-top: 80px;">
+                <div class="section-header text-center" style="margin-bottom: 50px;">
+                    <div class="badge" style="background: rgba(139, 233, 253, 0.08); border-color: rgba(139, 233, 253, 0.2); color: var(--neon-cyan);">Galeria z Warsztatu</div>
+                    <h3 style="font-size: 2.2rem; font-family: var(--font-heading);">Live Workshop <span class="gradient-text">Diagnostics</span></h3>
+                    <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 10px;">Autentyczne kadry dokumentujące zaawansowane zabiegi renowacyjne, czyszczenie podwozia oraz precyzyjną blacharkę.</p>
+                </div>
+
+                <div class="workshop-gallery-grid">
+                    <!-- Photo 1: foto33 -->
+                    <div class="gallery-card glass-card" onclick="openLightbox(this)" data-src="assets/foto33.jpg" data-title="Piaskowanie Zawieszenia" data-desc="Usuwanie nalotów rdzy z metalowych elementów wahacza z użyciem profesjonalnego ścierniwa korundowego." data-temp="68°C" data-psi="118 PSI" data-steel="JIS G3101">
+                        <div class="gallery-media-wrapper">
+                            <img src="assets/foto33.jpg" alt="Piaskowanie Zawieszenia Kasoku" onerror="showFallback(this, 'foto33', 'SYS_ERR_33', 'SUSPENSION')">
+                            <div class="fallback-pixel-art" style="display: none;">
+                                <div class="fallback-icon">⚙️</div>
+                                <span class="fallback-code">SYS_ERR_33</span>
+                                <span class="fallback-label">ACTIVE DIAGNOSTIC</span>
+                            </div>
+                            <div class="hud-overlay">
+                                <div class="hud-rec"><span class="rec-dot"></span>REC</div>
+                                <div class="hud-telemetry">TEMP: <span class="telemetry-value">68°C</span></div>
+                            </div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <h4>01 // Suspension Blast</h4>
+                            <p>Piaskowanie korundowe zawieszenia</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2: foto32 -->
+                    <div class="gallery-card glass-card" onclick="openLightbox(this)" data-src="assets/foto32.jpg" data-title="Regeneracja podzespołów" data-desc="Przygotowanie elementów pomocniczych ramy do cynkowania galwanicznego i nałożenia powłok ochronnych." data-temp="24°C" data-psi="95 PSI" data-steel="S235JR">
+                        <div class="gallery-media-wrapper">
+                            <img src="assets/foto32.jpg" alt="Regeneracja podwozia" onerror="showFallback(this, 'foto32', 'SYS_ERR_32', 'FRAME')">
+                            <div class="fallback-pixel-art" style="display: none;">
+                                <div class="fallback-icon">🛠️</div>
+                                <span class="fallback-code">SYS_ERR_32</span>
+                                <span class="fallback-label">ACTIVE DIAGNOSTIC</span>
+                            </div>
+                            <div class="hud-overlay">
+                                <div class="hud-rec"><span class="rec-dot"></span>REC</div>
+                                <div class="hud-telemetry">PSI: <span class="telemetry-value">95 PSI</span></div>
+                            </div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <h4>02 // Subframe Prepping</h4>
+                            <p>Przygotowanie elementów ramy pomocniczej</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3: lilith_engine -->
+                    <div class="gallery-card glass-card" onclick="openLightbox(this)" data-src="assets/photos/lilith_engine.jpg" data-title="Silnik Miaty Lilith" data-desc="Jednostka napędowa 1.8 BP-4W w pełni uszczelniona, zregenerowana i przygotowana do torowej eksploatacji." data-temp="92°C" data-psi="0 PSI" data-steel="ALU-BLOCK">
+                        <div class="gallery-media-wrapper">
+                            <img src="assets/photos/lilith_engine.jpg" alt="Silnik Mazda MX-5 Lilith" onerror="showFallback(this, 'lilith_engine', 'ENG_LILITH', '1.8 BP-4W')">
+                            <div class="fallback-pixel-art" style="display: none;">
+                                <div class="fallback-icon">🔥</div>
+                                <span class="fallback-code">ENG_LILITH</span>
+                                <span class="fallback-label">ACTIVE DIAGNOSTIC</span>
+                            </div>
+                            <div class="hud-overlay">
+                                <div class="hud-rec"><span class="rec-dot"></span>REC</div>
+                                <div class="hud-telemetry">UNIT: <span class="telemetry-value">BP-4W</span></div>
+                            </div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <h4>03 // Mazda BP-4W Heart</h4>
+                            <p>Serce torowej Mazdy MX-5 Lilith</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4: foto21 -->
+                    <div class="gallery-card glass-card" onclick="openLightbox(this)" data-src="assets/foto21.jpg" data-title="Renowacja Blacharska" data-desc="Wycinanie ognisk korozji i ręczne dorabianie poszycia podłużnic i nadkoli na wzór fabryczny." data-temp="156°C" data-psi="0 PSI" data-steel="FE-SEAMLESS">
+                        <div class="gallery-media-wrapper">
+                            <img src="assets/foto21.jpg" alt="Blacharstwo Kasoku" onerror="showFallback(this, 'foto21', 'SYS_ERR_21', 'METALWORK')">
+                            <div class="fallback-pixel-art" style="display: none;">
+                                <div class="fallback-icon">⚡</div>
+                                <span class="fallback-code">SYS_ERR_21</span>
+                                <span class="fallback-label">ACTIVE DIAGNOSTIC</span>
+                            </div>
+                            <div class="hud-overlay">
+                                <div class="hud-rec"><span class="rec-dot"></span>REC</div>
+                                <div class="hud-telemetry">WELD: <span class="telemetry-value">156°C</span></div>
+                            </div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <h4>04 // Precision Metalwork</h4>
+                            <p>Ręczne dorabianie poszycia podłużnic</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 5: foto24 -->
+                    <div class="gallery-card glass-card" onclick="openLightbox(this)" data-src="assets/foto24.jpg" data-title="Zabezpieczenie Powłokami" data-desc="Aplikacja trójwarstwowej technologii antykorozyjnej Mike Sanders i powłok Innotec na suche podwozie." data-temp="22°C" data-psi="110 PSI" data-steel="POLY-COAT">
+                        <div class="gallery-media-wrapper">
+                            <img src="assets/foto24.jpg" alt="Zabezpieczenie Podwozia Kasoku" onerror="showFallback(this, 'foto24', 'SYS_ERR_24', 'ANTIKOR')">
+                            <div class="fallback-pixel-art" style="display: none;">
+                                <div class="fallback-icon">🛡️</div>
+                                <span class="fallback-code">SYS_ERR_24</span>
+                                <span class="fallback-label">ACTIVE DIAGNOSTIC</span>
+                            </div>
+                            <div class="hud-overlay">
+                                <div class="hud-rec"><span class="rec-dot"></span>REC</div>
+                                <div class="hud-telemetry">PSI: <span class="telemetry-value">110 PSI</span></div>
+                            </div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <h4>05 // Anticorrosion Seal</h4>
+                            <p>Aplikacja wosków Mike Sanders i Innotec</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 6: foto17 -->
+                    <div class="gallery-card glass-card" onclick="openLightbox(this)" data-src="assets/foto17.jpg" data-title="Gotowe Podwozie" data-desc="W pełni zmontowane zawieszenie na poliuretanach z cynkowanymi śrubami oraz zabezpieczoną płytą podłogową." data-temp="18°C" data-psi="0 PSI" data-steel="JDM-COMPLETED">
+                        <div class="gallery-media-wrapper">
+                            <img src="assets/foto17.jpg" alt="Gotowa renowacja podwozia" onerror="showFallback(this, 'foto17', 'SYS_ERR_17', 'JDM_DONE')">
+                            <div class="fallback-pixel-art" style="display: none;">
+                                <div class="fallback-icon">✨</div>
+                                <span class="fallback-code">SYS_ERR_17</span>
+                                <span class="fallback-label">ACTIVE DIAGNOSTIC</span>
+                            </div>
+                            <div class="hud-overlay">
+                                <div class="hud-rec"><span class="rec-dot"></span>REC</div>
+                                <div class="hud-telemetry">DONE // STATUS OK</div>
+                            </div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <h4>06 // Finished Masterpiece</h4>
+                            <p>Kompletne podwozie gotowe do jazdy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KASOKU FLEET PROJECTS -->
+            <div class="workshop-gallery-container" style="margin-top: 70px;">
+                <div class="section-header text-center" style="margin-bottom: 40px;">
+                    <div class="badge" style="background: rgba(241, 250, 140, 0.08); border-color: rgba(241, 250, 140, 0.2); color: #f1fa8c;">Nasza Flota</div>
+                    <h3 style="font-size: 2.2rem; font-family: var(--font-heading);">Nasze Firmowe <span class="gradient-text">Projekty</span></h3>
+                    <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 10px;">Autorskie odbudowy i modyfikacje Miat, które udowadniają naszą pasję do motorsportu.</p>
+                </div>
+
+                <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <!-- Project 1: Lilith -->
+                    <div class="project-card glass-card" style="display: flex; flex-direction: column; overflow: hidden;">
+                        <div class="project-media-wrapper" style="height: 200px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <img src="assets/photos/lilith_ulez_29photos.jpg" alt="Mazda MX-5 Lilith" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-img-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #2a2b36 0%, #1a1b26 100%); display: none; align-items: center; justify-content: center;">
+                                <span style="font-family: var(--font-mono); font-size: 3rem; color: var(--sakura-pink); text-shadow: 0 0 10px var(--sakura-glow);">NB</span>
+                                <div style="position: absolute; bottom: 10px; right: 15px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--sakura-pink);">LILITH // ACTIVE</div>
+                            </div>
+                        </div>
+                        <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <h4 style="font-size: 1.3rem; margin-bottom: 10px; color: var(--text-white);">Mazda MX-5 "Lilith"</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; flex-grow: 1;">
+                                Lilith to jedna z pierwszych Miat, którą zbudowaliśmy od zera. Spełniła marzenie o torowej maszynie. Auto zostało rozebrane do ostatniej śrubki, odbudowane blacharsko i w pełni uszczelnione. Manifest miłości do motorsportu.
+                            </p>
+                            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--sakura-pink); margin-top: 15px; display: block;">ENGINE: 1.8 BP-4W // TRACK BUILD</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Limonka -->
+                    <div class="project-card glass-card" style="display: flex; flex-direction: column; overflow: hidden;">
+                        <div class="project-media-wrapper" style="height: 200px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <img src="assets/photos/limonka_silesia_29photos.jpg" alt="Mazda MX-5 Limonka" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-img-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #2a2b36 0%, #1a1b26 100%); display: none; align-items: center; justify-content: center;">
+                                <span style="font-family: var(--font-mono); font-size: 3rem; color: #50fa7b; text-shadow: 0 0 10px rgba(80,250,123,0.3);">NA</span>
+                                <div style="position: absolute; bottom: 10px; right: 15px; font-family: var(--font-mono); font-size: 0.8rem; color: #50fa7b;">LIMONKA // SPEC</div>
+                            </div>
+                        </div>
+                        <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <h4 style="font-size: 1.3rem; margin-bottom: 10px; color: var(--text-white);">Mazda MX-5 "Limonka"</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; flex-grow: 1;">
+                                Rasowa torówka zbudowana zgodnie z surowym regulaminem klasy Spec NA/NB do rywalizacji w ogólnopolskim pucharze Miata Challenge. Maksymalnie odelżona, sztywna i wystrojona wyłącznie do walki o sekundy na pętli.
+                            </p>
+                            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #50fa7b; margin-top: 15px; display: block;">WEIGHT REDUCED // MIATA CHALLENGE SPEC</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Jacob's Blue -->
+                    <div class="project-card glass-card" style="display: flex; flex-direction: column; overflow: hidden;">
+                        <div class="project-media-wrapper" style="height: 200px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <img src="assets/photos/jacobs_blue.jpg" alt="Mazda MX-5 Jacob's Blue" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-img-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #2a2b36 0%, #1a1b26 100%); display: none; align-items: center; justify-content: center;">
+                                <span style="font-family: var(--font-mono); font-size: 3rem; color: var(--neon-cyan); text-shadow: 0 0 10px var(--cyan-glow);">NBFL</span>
+                                <div style="position: absolute; bottom: 10px; right: 15px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-cyan);">JACOBS_BLUE // ROTREX</div>
+                            </div>
+                        </div>
+                        <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                            <h4 style="font-size: 1.3rem; margin-bottom: 10px; color: var(--text-white);">Mazda MX-5 "Jacob's Blue"</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; flex-grow: 1;">
+                                Miata uniwersalna: idealna na letnią wycieczkę, wakacje i zlot, lecz w ułamku sekundy gotowa na tor. Silnik 1.6 doładowany profesjonalnym kompresorem Rotrex™ pozwolił na podwojenie mocy ze 110 KM do aż 220 KM!
+                            </p>
+                            <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-cyan); margin-top: 15px; display: block;">POWER: 220 HP // ROTREX™ COMPRESSOR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Quote Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="badge">Kontakt</div>
+                    <h2 class="section-title">Rozpocznijmy Twój <br><span class="gradient-text">Projekt</span></h2>
+                    <p class="contact-desc">Masz pytania dotyczące renowacji blacharskiej lub potrzebujesz profesjonalnego zabezpieczenia antykorozyjnego? Skontaktuj się z nami! Zapraszamy na oględziny i pomiary podwozia.</p>
+                    
+                    <div class="info-links">
+                        <div class="info-link-item">
+                            <div class="info-icon">📞</div>
+                            <div>
+                                <span class="info-label">Zadzwoń do nas</span>
+                                <a href="tel:+48798405145" class="info-val">+48 798 405 145</a>
+                            </div>
+                        </div>
+                        <div class="info-link-item">
+                            <div class="info-icon">✉️</div>
+                            <div>
+                                <span class="info-label">Napisz e-mail</span>
+                                <a href="mailto:kontakt@kasoku.pl" class="info-val">kontakt@kasoku.pl</a>
+                            </div>
+                        </div>
+                        <div class="info-link-item">
+                            <div class="info-icon">📍</div>
+                            <div>
+                                <span class="info-label">Nasz Warsztat</span>
+                                <span class="info-val">ul. Stara 76, Nadma 05-270 (k. Warszawy)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="branch-status glass-card" style="margin-bottom: 25px;">
+                        <div class="pixel-clock">⏰</div>
+                        <div>
+                            <strong>Godziny Pracy:</strong>
+                            <p>Poniedziałek - Piątek: 08:00 - 18:00<br>Sobota - Niedziela: Zamknięte</p>
+                        </div>
+                    </div>
+
+                    <!-- Beautiful Google Map Embed inside stylized frame -->
+                    <div class="glass-card map-wrapper" style="overflow: hidden; padding: 6px; border-color: rgba(139, 233, 253, 0.15);">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.3970315117504!2d21.157227976849974!3d52.36322047202053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ec550e5d07349%3A0xd335d3793156f806!2sKasoku%20Renovation!5e0!3m2!1spl!2spl!4v1699456411670!5m2!1spl!2spl"
+                            width="100%"
+                            height="200"
+                            style="border:0; border-radius: 10px; display:block; filter: grayscale(1) invert(0.9) contrast(1.2);"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Kasoku Renovation Nadma Google Map">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper glass-card">
+                    <h3 class="form-title">Darmowa Wycena Renowacji</h3>
+                    <p class="form-subtitle">Zostaw dane, skontaktujemy się w celu omówienia szczegółów!</p>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="form-name">Imię i Nazwisko / Firma</label>
+                            <input type="text" id="form-name" required placeholder="np. Jan Kowalski" class="form-input">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-phone">Numer Telefonu</label>
+                                <input type="tel" id="form-phone" required placeholder="np. +48 798 405 145" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Adres E-mail</label>
+                                <input type="email" id="form-email" required placeholder="np. jan@poczta.pl" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-service">Rodzaj Usługi</label>
+                            <select id="form-service" class="form-input">
+                                <option value="restoration">Kompleksowa Odbudowa / Renowacja</option>
+                                <option value="anticorrosion">Zabezpieczenie Antykorozyjne Podwozia (piaskowanie)</option>
+                                <option value="blacharstwo">Naprawy Blacharskie i Odbudowa Elementów</option>
+                                <option value="service">Serwis Zawieszenia (poliuretany) &amp; Eksploatacja</option>
+                                <option value="other">Inny Projekt Indywidualny</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message">Opis Twojego pojazdu oraz oczekiwany zakres prac</label>
+                            <textarea id="form-message" rows="4" placeholder="Opisz swój samochód, np. Mazda MX-5 NB z 2001 r., usunięcie rdzy z podłużnic, konserwacja podwozia oraz cynkowanie zawieszenia..." class="form-input"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="btn-submit-form">
+                            Wyślij Zapytanie o Wycenę
+                        </button>
+                    </form>
+
+                    <div class="form-success-message" id="form-success">
+                        <div class="success-icon">✨</div>
+                        <h4>Zapytanie wysłane pomyślnie!</h4>
+                        <p>Dziękujemy! Otrzymaliśmy Twoje zapytanie. Nasz specjalista skontaktuje się z Tobą telefonicznie lub mailowo w ciągu kilku godzin w celu przedstawienia wstępnej wyceny.</p>
+                        <button class="btn btn-secondary btn-sm" id="btn-reset-form">Wyślij kolejne zapytanie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="assets/logo_transparent.png" alt="Kasoku Renovation Logo" class="logo-img logo-img-footer">
+                    <span class="logo-text">KASOKU <span class="accent-text">RENOVATION</span></span>
+                </a>
+                <p>Niezwykłe połączenie tradycyjnej japońskiej precyzji z potężnym zaangażowaniem w motorsport. Profesjonalna blacharka i długowieczne zabezpieczenia antykorozyjne.</p>
+                <div class="footer-social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="https://www.facebook.com/profile.php?id=100091727993738" target="_blank" style="color: var(--text-muted); font-size: 1.4rem; transition: var(--transition);" onmouseover="this.style.color='var(--sakura-pink)'" onmouseout="this.style.color='var(--text-muted)'" title="Facebook">FB</a>
+                    <a href="https://www.facebook.com/messages/t/101921749562967" target="_blank" style="color: var(--text-muted); font-size: 1.4rem; transition: var(--transition);" onmouseover="this.style.color='var(--sakura-pink)'" onmouseout="this.style.color='var(--text-muted)'" title="Messenger">MSN</a>
+                    <a href="https://youtube.com/@KasokuCars" target="_blank" style="color: var(--text-muted); font-size: 1.4rem; transition: var(--transition);" onmouseover="this.style.color='var(--sakura-pink)'" onmouseout="this.style.color='var(--text-muted)'" title="YouTube">YT</a>
+                </div>
+            </div>
+            
+            <div class="footer-links-group">
+                <h4>Nawigacja</h4>
+                <ul>
+                    <li><a href="#about">O Nas</a></li>
+                    <li><a href="#simulator">Symulator Piaskowania</a></li>
+                    <li><a href="#services">Oferta Usług</a></li>
+                    <li><a href="#portfolio">Realizacje &amp; Flota</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Nasze Usługi</h4>
+                <ul>
+                    <li><a href="#services">Naprawy Blacharskie</a></li>
+                    <li><a href="#services">Konserwacja Podwozia</a></li>
+                    <li><a href="#services">Serwis &amp; Poliuretany</a></li>
+                    <li><a href="#services">Kompleksowa Odbudowa</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <p>&copy; 2026 Kasoku Renovation. Wszelkie prawa zastrzeżone. Nadma, ul. Stara 76. Tel: +48 798 405 145</p>
+                <div class="footer-meta-notes" style="font-size: 0.8rem; color: var(--text-dimmed); margin-top: 6px;">Projekt Premium UI &amp; 8-Bit Art wykonany z pełną precyzją rzemiosła.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Diagnostic Modal -->
+    <div id="gallery-lightbox" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content-wrapper">
+            <div class="lightbox-visual">
+                <img id="lightbox-img" src="" alt="Diagnostic Zoom">
+                <div class="lightbox-overlay-hud">
+                    <div class="hud-rec blinking"><span class="rec-dot"></span>ZOOM_REC</div>
+                    <div class="hud-coordinates">LOC_NADMA // 52.363° N, 21.157° E</div>
+                </div>
+            </div>
+            <div class="lightbox-diagnostics-panel glass-card">
+                <div class="panel-header">
+                    <span class="badge" style="margin-bottom: 10px; background: rgba(139, 233, 253, 0.08); border-color: rgba(139, 233, 253, 0.2); color: var(--neon-cyan);">Telemetry Viewer</span>
+                    <h3 id="lightbox-title">Nazwa Podzespołu</h3>
+                </div>
+                <p id="lightbox-desc" class="panel-desc">Szczegółowy opis renowacji.</p>
+                <div class="panel-specs">
+                    <div class="spec-row">
+                        <span class="spec-label">Steel Grade:</span>
+                        <span id="spec-steel" class="spec-val">JIS G3101</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Blasting Pressure:</span>
+                        <span id="spec-psi" class="spec-val">118 PSI</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Diagnostics Temp:</span>
+                        <span id="spec-temp" class="spec-val">68°C</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Protection Coating:</span>
+                        <span class="spec-val" style="color: #50fa7b; font-weight: bold;">MIKE SANDERS / C5-M</span>
+                    </div>
+                </div>
+                <div class="panel-note">
+                    SYSTEM RUNNING UNDER JDM SPECIFICATION. KASOKU QUALITY SEAL APPROVED.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
