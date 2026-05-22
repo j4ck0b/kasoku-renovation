@@ -559,4 +559,107 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ==========================================
+    // 6. LIVE WORKSHOP DIAGNOSTICS LIGHTBOX
+    // ==========================================
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const specSteel = document.getElementById('spec-steel');
+    const specPsi = document.getElementById('spec-psi');
+    const specTemp = document.getElementById('spec-temp');
+
+    window.openLightbox = function(card) {
+        if (!lightbox) return;
+        
+        const src = card.getAttribute('data-src');
+        const title = card.getAttribute('data-title');
+        const desc = card.getAttribute('data-desc');
+        const temp = card.getAttribute('data-temp');
+        const psi = card.getAttribute('data-psi');
+        const steel = card.getAttribute('data-steel');
+
+        // Check if the image within the card is in a fallback state
+        const img = card.querySelector('img');
+        const fallback = card.querySelector('.fallback-pixel-art');
+        
+        if (lightboxImg) {
+            if (fallback && fallback.style.display !== 'none') {
+                // If the card has fallback, show a similar fallback or empty img in lightbox
+                lightboxImg.style.display = 'none';
+                
+                // Let's check if we already have a fallback div in the lightbox visual, if not create one
+                let visualContainer = lightboxImg.parentElement;
+                let existingFallback = visualContainer.querySelector('.fallback-pixel-art-lightbox');
+                if (!existingFallback) {
+                    existingFallback = document.createElement('div');
+                    existingFallback.className = 'fallback-pixel-art fallback-pixel-art-lightbox';
+                    existingFallback.style.cssText = 'width: 100%; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center;';
+                    visualContainer.appendChild(existingFallback);
+                }
+                existingFallback.innerHTML = fallback.innerHTML;
+                existingFallback.style.display = 'flex';
+            } else {
+                // Remove lightbox fallback if it exists
+                let visualContainer = lightboxImg.parentElement;
+                let existingFallback = visualContainer.querySelector('.fallback-pixel-art-lightbox');
+                if (existingFallback) {
+                    existingFallback.style.display = 'none';
+                }
+                lightboxImg.src = src;
+                lightboxImg.style.display = 'block';
+            }
+        }
+
+        if (lightboxTitle) lightboxTitle.textContent = title || '';
+        if (lightboxDesc) lightboxDesc.textContent = desc || '';
+        if (specSteel) specSteel.textContent = steel || 'N/A';
+        if (specPsi) specPsi.textContent = psi || 'N/A';
+        if (specTemp) specTemp.textContent = temp || 'N/A';
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Disable background scrolling
+    };
+
+    window.closeLightbox = function() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable background scrolling
+    };
+
+    // Close lightbox on click outside the content
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                window.closeLightbox();
+            }
+        });
+    }
+
+    // Close on ESC key press
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            window.closeLightbox();
+        }
+    });
+
+    // ==========================================
+    // 7. IMAGE LOAD FALLBACK SYSTEM (8-BIT)
+    // ==========================================
+    window.showFallback = function(imgElement, originalName, errCode, errLabel) {
+        // Hide the original broken image
+        imgElement.style.display = 'none';
+        
+        // Find parent and fallback element
+        const parent = imgElement.parentElement;
+        if (parent) {
+            const fallbackDiv = parent.querySelector('.fallback-pixel-art');
+            if (fallbackDiv) {
+                fallbackDiv.style.display = 'flex';
+            }
+        }
+        console.warn(`[KASOKU DIAGNOSTICS] Asset failed to load: ${originalName}. Triggered fallback code: ${errCode} (${errLabel})`);
+    };
 });
